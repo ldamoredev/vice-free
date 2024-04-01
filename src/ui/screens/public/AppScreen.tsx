@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
-import { ScreenDefinition } from '../navigation/navigator/ScreenDefinition'
-import { ScreenVisibilities } from '../navigation/navigator/ScreenVisibilities'
+import { ScreenDefinition } from '../../navigation/navigator/ScreenDefinition'
+import { ScreenVisibilities } from '../../navigation/navigator/ScreenVisibilities'
 
 export function AppScreen() {
     return (

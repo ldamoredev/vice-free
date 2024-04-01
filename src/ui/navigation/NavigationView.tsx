@@ -7,7 +7,7 @@ import { ReactNavigator } from './navigator/ReactNavigator'
 const Stack = createNativeStackNavigator()
 
 export const NavigationView: FC<Props> = ({ navigator }) => {
-    const isAuthenticated  = false
+    const isAuthenticated  = true
     const routeNameRef = useRef<string>()
     const screens = useMemo(() => navigator.getScreens(isAuthenticated), [navigator, isAuthenticated])
     const modals = useMemo(() => navigator.getModals(isAuthenticated), [navigator, isAuthenticated])
@@ -22,7 +22,9 @@ export const NavigationView: FC<Props> = ({ navigator }) => {
         <NavigationContainer
             ref={navigator.ref}
             theme={navigationTheme}
-            onReady={() => { routeNameRef.current = navigator.currentRoute?.path }}
+            onReady={() => {
+                routeNameRef.current = navigator.currentRoute?.path
+            }}
         >
             <Stack.Navigator>
                 {screens.map(toScreen)}
