@@ -3,11 +3,14 @@ import React, { FC, useMemo, useRef } from 'react'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { ScreenDefinition } from './navigator/ScreenDefinition'
 import { ReactNavigator } from './navigator/ReactNavigator'
+import { useIdentity } from '../auth/useIdentity'
+import { TabsLayout } from '../layout/TabsLayout'
+import { AppScreen } from '../screens/public/AppScreen'
 
 const Stack = createNativeStackNavigator()
 
 export const NavigationView: FC<Props> = ({ navigator }) => {
-    const isAuthenticated  = true
+    const { isAuthenticated } = useIdentity()
     const routeNameRef = useRef<string>()
     const screens = useMemo(() => navigator.getScreens(isAuthenticated), [navigator, isAuthenticated])
     const modals = useMemo(() => navigator.getModals(isAuthenticated), [navigator, isAuthenticated])
@@ -27,7 +30,19 @@ export const NavigationView: FC<Props> = ({ navigator }) => {
             }}
         >
             <Stack.Navigator>
-                {screens.map(toScreen)}
+                {/*{screens.map(toScreen)}*/}
+                {!isAuthenticated && (
+                    <Stack.Group>
+                        <Stack.Screen name="Home" component={AppScreen} options={{ headerShown: false }} />
+                    </Stack.Group>
+                )}
+                {
+                    isAuthenticated && (
+                        <Stack.Group>
+                            <Stack.Screen name="Main" component={TabsLayout} options={{ headerShown: false }} />
+                        </Stack.Group>
+                    )
+                }
                 {modals.length > 0 && (
                     <Stack.Group screenOptions={modalGroupOptions}>
                         {modals.map(toScreen)}

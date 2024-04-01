@@ -4,6 +4,9 @@ import { registerRootComponent } from 'expo'
 import { ScreenDefinition } from './ui/navigation/navigator/ScreenDefinition'
 import { ReactNavigator } from './ui/navigation/navigator/ReactNavigator'
 import { Context } from './ui/context/Context'
+import { SimpleAuthenticator } from './infrastructure/auth/SimpleAuthenticator'
+import { AsyncSecureStorage } from './infrastructure/auth/AsyncSecureStorage'
+import { AuthStorage } from './infrastructure/auth/AuthStorage'
 
 export class AppShell {
     public readonly context: Context
@@ -14,6 +17,7 @@ export class AppShell {
 
     private createContext(): Context {
         return {
+            authenticator: new SimpleAuthenticator(new AuthStorage(new AsyncSecureStorage())),
             navigator: new ReactNavigator(),
         }
     }

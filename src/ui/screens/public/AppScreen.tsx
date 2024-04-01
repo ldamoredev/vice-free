@@ -1,13 +1,14 @@
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import { ScreenDefinition } from '../../navigation/navigator/ScreenDefinition'
 import { ScreenVisibilities } from '../../navigation/navigator/ScreenVisibilities'
+import { useAppContext } from '../../context/AppContext'
 
 export function AppScreen() {
+    const { authenticator } = useAppContext()
     return (
         <View style={styles.container}>
             <Text>Open up App.tsx to start working on your app!</Text>
-            <StatusBar style="auto" />
+            <Button title="Logearme" onPress={async () => await authenticator.login('Lautaro')} />
         </View>
     )
 }
