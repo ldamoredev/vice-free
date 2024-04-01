@@ -1,4 +1,6 @@
-import App from './App'
-import { registerRootComponent } from 'expo'
+import { AppShell } from './AppShell'
+import { AppScreenDefinition } from './ui/screens/AppScreen'
 
-registerRootComponent(App)
+const app = new AppShell()
+app.addScreen(AppScreenDefinition)
+app.start()
