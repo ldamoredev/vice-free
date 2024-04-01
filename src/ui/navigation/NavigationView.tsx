@@ -4,8 +4,6 @@ import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react
 import { ScreenDefinition } from './navigator/ScreenDefinition'
 import { ReactNavigator } from './navigator/ReactNavigator'
 import { useIdentity } from '../auth/useIdentity'
-import { TabsLayout } from '../layout/TabsLayout'
-import { AppScreen } from '../screens/public/AppScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -26,23 +24,18 @@ export const NavigationView: FC<Props> = ({ navigator }) => {
             ref={navigator.ref}
             theme={navigationTheme}
             onReady={() => {
-                routeNameRef.current = navigator.currentRoute?.path
+                routeNameRef.current = navigator.currentRoute.path
+            }}
+            onStateChange={() => {
+                const previousRouteName = routeNameRef.current
+                const currentRouteName = navigator.currentRoute.path
+                if (previousRouteName !== currentRouteName) {
+                    routeNameRef.current = currentRouteName
+                }
             }}
         >
             <Stack.Navigator>
-                {/*{screens.map(toScreen)}*/}
-                {!isAuthenticated && (
-                    <Stack.Group>
-                        <Stack.Screen name="Home" component={AppScreen} options={{ headerShown: false }} />
-                    </Stack.Group>
-                )}
-                {
-                    isAuthenticated && (
-                        <Stack.Group>
-                            <Stack.Screen name="Main" component={TabsLayout} options={{ headerShown: false }} />
-                        </Stack.Group>
-                    )
-                }
+                {screens.map(toScreen)}
                 {modals.length > 0 && (
                     <Stack.Group screenOptions={modalGroupOptions}>
                         {modals.map(toScreen)}

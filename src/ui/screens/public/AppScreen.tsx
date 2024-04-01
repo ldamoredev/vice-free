@@ -16,7 +16,7 @@ export function AppScreen() {
 export const AppScreenDefinition: ScreenDefinition = {
     path: '/home',
     component: AppScreen,
-    visibility: ScreenVisibilities.Public,
+    visibility: ScreenVisibilities.Anonymous,
     options: { headerShown: false },
 }
 

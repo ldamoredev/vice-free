@@ -1,5 +1,4 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
-import { StatusBar } from 'expo-status-bar'
 import { useAppContext } from '../../context/AppContext'
 
 export const PanelScreen = () => {
