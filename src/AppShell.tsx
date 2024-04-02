@@ -9,6 +9,7 @@ import { AsyncSecureStorage } from './infrastructure/auth/AsyncSecureStorage'
 import { AuthStorage } from './infrastructure/auth/AuthStorage'
 import { UnhandledErrorManager } from './ui/unhandledErrors/UnhandledErrorManager'
 import { UnhandledErrorHandler } from './ui/unhandledErrors/UnhandledErrorHandler'
+import { ReactNativePromisePatcher } from './ui/unhandledErrors/ReactNativePromisePatcher'
 
 export class AppShell {
     public readonly context: Context
@@ -17,6 +18,7 @@ export class AppShell {
     constructor(private config: AppConfig) {
         this.context = this.createContext()
         this.unhandledErrorManager = new UnhandledErrorManager(this.context, config.onUnhandledError)
+        new ReactNativePromisePatcher().setup((e) => this.unhandledErrorManager.handle(e))
     }
 
     private createContext(): Context {

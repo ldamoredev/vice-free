@@ -15,6 +15,9 @@ export const PanelScreen = () => {
             <Text>Este es el PANEL</Text>
             <Button title="Logout" onPress={async () => await authenticator.logout()} />
             <Button title="Romper" onPress={async () => await presenter.break()} />
+            <Button title="Romper UI" onPress={async () => {
+                throw new Error('xD')
+            }} />
         </View>
     )
 }
