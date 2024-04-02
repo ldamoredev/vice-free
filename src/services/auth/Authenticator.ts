@@ -6,6 +6,7 @@ export interface Authenticator {
     readonly identity: Identity
     readonly isLoaded: boolean
 
+    load(): Promise<void>
     login(name: string): Promise<void>
     logout(): Promise<void>
 }
