@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { PanelScreen } from '../screens/private/PanelScreen'
+import { PanelScreen } from '../screens/private/Panel/PanelScreen'
 import { SettingsScreen } from '../screens/private/SettingsScreen'
 import { ScreenDefinition } from '../navigation/navigator/ScreenDefinition'
 import { ScreenVisibilities } from '../navigation/navigator/ScreenVisibilities'

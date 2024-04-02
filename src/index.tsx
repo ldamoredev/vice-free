@@ -8,8 +8,6 @@ import { InternalErrorModalDefinition } from './ui/components/modals/InternalErr
 const appConfig: AppConfig = {
     onUnhandledError: (e: Error, context: Context) => {
         console.error(e)
-        console.error('Alo?')
-        console.log(context.navigator)
         context.navigator.navigate('/modals/internalError')
     },
 }
