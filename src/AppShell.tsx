@@ -7,18 +7,23 @@ import { Context } from './ui/context/Context'
 import { SimpleAuthenticator } from './infrastructure/auth/SimpleAuthenticator'
 import { AsyncSecureStorage } from './infrastructure/auth/AsyncSecureStorage'
 import { AuthStorage } from './infrastructure/auth/AuthStorage'
+import { UnhandledErrorManager } from './ui/unhandledErrors/UnhandledErrorManager'
+import { UnhandledErrorHandler } from './ui/unhandledErrors/UnhandledErrorHandler'
 
 export class AppShell {
     public readonly context: Context
+    private readonly unhandledErrorManager: UnhandledErrorManager
 
-    constructor() {
+    constructor(private config: AppConfig) {
         this.context = this.createContext()
+        this.unhandledErrorManager = new UnhandledErrorManager(this.context, config.onUnhandledError)
     }
 
     private createContext(): Context {
         return {
             authenticator: new SimpleAuthenticator(new AuthStorage(new AsyncSecureStorage())),
             navigator: new ReactNavigator(),
+            onUnhandledError: (e) => this.unhandledErrorManager.handle(e),
         }
     }
 
@@ -38,4 +43,8 @@ export class AppShell {
         const RootComponent = () => <>{this.rootComponent()}</>
         registerRootComponent(RootComponent)
     }
+}
+
+export interface AppConfig {
+    onUnhandledError: UnhandledErrorHandler
 }

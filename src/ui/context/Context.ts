@@ -4,4 +4,5 @@ import { Authenticator } from '../../services/auth/Authenticator'
 export interface Context {
     authenticator: Authenticator
     navigator: ReactNavigator
+    onUnhandledError: (error: Error) => void
 }
