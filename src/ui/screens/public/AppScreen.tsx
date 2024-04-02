@@ -4,6 +4,7 @@ import { ScreenVisibilities } from '../../navigation/navigator/ScreenVisibilitie
 import { useAppContext } from '../../context/AppContext'
 import { TextField } from '../../components/textFields/TextField'
 import { FilledButton } from '../../components/buttons/FilledButton'
+import { TextButton } from '../../components/buttons/TextButton'
 
 export function AppScreen() {
     const { authenticator } = useAppContext()
@@ -19,6 +20,7 @@ export function AppScreen() {
                 onChangeText={value => console.log(value)}
             />
             <FilledButton title="Logearme" onPress={async () => await authenticator.login('Lautaro')}/>
+            <TextButton title="Text Button" onPress={() => console.log('waste')}/>
         </View>
     )
 }
