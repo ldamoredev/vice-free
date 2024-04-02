@@ -1,8 +1,9 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { ScreenDefinition } from '../../navigation/navigator/ScreenDefinition'
 import { ScreenVisibilities } from '../../navigation/navigator/ScreenVisibilities'
 import { useAppContext } from '../../context/AppContext'
 import { TextField } from '../../components/textFields/TextField'
+import { FilledButton } from '../../components/buttons/FilledButton'
 
 export function AppScreen() {
     const { authenticator } = useAppContext()
@@ -17,7 +18,7 @@ export function AppScreen() {
                 errorText={''}
                 onChangeText={value => console.log(value)}
             />
-            <Button title="Logearme" onPress={async () => await authenticator.login('Lautaro')} />
+            <FilledButton title="Logearme" onPress={async () => await authenticator.login('Lautaro')}/>
         </View>
     )
 }
