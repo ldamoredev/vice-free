@@ -7,6 +7,7 @@ import { rgba } from '../../color'
 import { rv } from '../../rv'
 import { InputModeOptions, KeyboardTypeOptions } from 'react-native/Libraries/Components/TextInput/TextInput'
 import { styled } from '@nbottarini/react-native-styled'
+import { useTheme } from '../../../theme/ThemeContext/ThemeContext'
 
 export const FilledTextField = forwardRef<TextInput, FilledTextFieldProps>((props, ref) => {
     const [uncontrolledValue, setUncontrolledValue] = React.useState(props.defaultValue)
@@ -14,6 +15,7 @@ export const FilledTextField = forwardRef<TextInput, FilledTextFieldProps>((prop
     const value = isControlled ? props.value : uncontrolledValue
     const [focused, setFocused] = React.useState(false)
     const canEnterText = !props.disabled && props.editable
+    const { theme } = useTheme()
     const inputTypeScale = {
         fontFamily: 'Roboto-Regular',
         lineHeight: rv(24),
@@ -60,7 +62,7 @@ export const FilledTextField = forwardRef<TextInput, FilledTextFieldProps>((prop
                             error={props.error}
                             disabled={props.disabled}
                             label={props.label}
-                            focusedColor={'green'}
+                            focusedColor={theme.primaryColor}
                             placeholderColor={'#0F0F0F'}
                             errorColor={'#C73641'}
                             disabledColor={rgba('#0F0F0F', 0.38)}
@@ -80,8 +82,8 @@ export const FilledTextField = forwardRef<TextInput, FilledTextFieldProps>((prop
                         onChangeText={handleChangeText}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
-                        cursorColor={'green'}
-                        selectionColor={'green'}
+                        cursorColor={theme.primaryColor}
+                        selectionColor={theme.primaryColor}
                         underlineColorAndroid="transparent"
                         allowFontScaling={false}
                         style={[

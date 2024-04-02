@@ -4,6 +4,7 @@ import { rgba } from '../color'
 import { ViewStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
 import { styled, styledPressable } from '@nbottarini/react-native-styled'
 import { rv } from '../rv'
+import { themed } from '../../theme/themed'
 
 export const FilledButton: React.FC<FilledButtonProps> = (props) => {
     return (
@@ -28,9 +29,9 @@ export const FilledButton: React.FC<FilledButtonProps> = (props) => {
     )
 }
 
-const Container = styled(View, ({ disabled }) => ({
+const Container = themed(View, ({ disabled, theme }) => ({
     borderRadius: rv(4),
-    backgroundColor: 'green',
+    backgroundColor: theme.primaryColor,
     ...(disabled ? {
         backgroundColor: rgba('#0F0F0F', 0.38),
     } : {}),

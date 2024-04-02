@@ -4,6 +4,7 @@ import { rgba } from '../color'
 import { ViewStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
 import { styled, styledPressable } from '@nbottarini/react-native-styled'
 import { rv } from '../rv'
+import { themedPressable } from '../../theme/themed'
 
 export const TextButton: React.FC<TextButtonProps> = (props) => {
     return (
@@ -29,11 +30,11 @@ export const TextButton: React.FC<TextButtonProps> = (props) => {
     )
 }
 
-const Container = styledPressable(View, () => ({
+const Container = themedPressable(View, () => ({
     paddingVertical: rv(10),
-}), () => ({
+}), ({ theme }) => ({
     borderRadius: rv(4),
-    backgroundColor: rgba('green', 0.12),
+    backgroundColor: rgba(theme.primaryColor, 0.12),
 }))
 
 const StateLayer = styled(View, {
@@ -44,7 +45,7 @@ const StateLayer = styled(View, {
     paddingHorizontal: rv(12),
 })
 
-const Label = styledPressable(Text, ({ disabled }) => ({
+const Label = themedPressable(Text, ({ disabled, theme }) => ({
     fontFamily: 'Roboto-Medium',
     lineHeight: rv(24),
     fontSize: rv(16),
@@ -52,12 +53,12 @@ const Label = styledPressable(Text, ({ disabled }) => ({
     flexShrink: 1,
     flexGrow: 0,
     textAlign: 'center',
-    color: 'green',
+    color: theme.primaryColor,
     ...(disabled ? {
         color: rgba('#0F0F0F', 0.38),
     } : {}),
-}), () => ({
-    color: 'green',
+}), ({ theme }) => ({
+    color: theme.primaryColor,
 }))
 
 export interface TextButtonProps {

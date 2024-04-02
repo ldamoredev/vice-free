@@ -2,8 +2,10 @@ import * as React from 'react'
 import { FC } from 'react'
 import { Animated } from 'react-native'
 import { rgba } from '../../color'
+import { useTheme } from '../../../theme/ThemeContext/ThemeContext'
 
 export const ActiveIndicator: FC<Props> = ({ focused, error, disabled }) => {
+    const { theme } = useTheme()
     return (
         <Animated.View
             style={{
@@ -21,7 +23,7 @@ export const ActiveIndicator: FC<Props> = ({ focused, error, disabled }) => {
                         : 1,
                 }],
                 ...(focused ? {
-                    backgroundColor: 'green',
+                    backgroundColor: theme.primaryColor,
                 } : {}),
                 ...(error ? {
                     backgroundColor: '#C73641',
