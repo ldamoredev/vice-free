@@ -1,9 +1,9 @@
 import { Observable } from '@nbottarini/observable'
-import { Authenticator } from '../../services/auth/Authenticator'
-import { Identity } from '../../services/auth/identity/Identity'
-import { AnonymousIdentity } from '../../services/auth/identity/AnonymousIdentity'
+import { Authenticator } from '../../ui/auth/Authenticator'
+import { Identity } from '../../ui/auth/identity/Identity'
+import { AnonymousIdentity } from '../../ui/auth/identity/AnonymousIdentity'
 import { AuthStorage } from './AuthStorage'
-import { UserIdentity } from '../../services/auth/identity/UserIdentity'
+import { UserIdentity } from '../../ui/auth/identity/UserIdentity'
 
 export class SimpleAuthenticator implements Authenticator {
     readonly changed = new Observable<Identity>()

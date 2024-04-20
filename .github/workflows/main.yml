@@ -1,0 +1,23 @@
+name: "App Workflow"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  app-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Test App
+        run: |
+          npm install
+          npm run lint
+          npm run test

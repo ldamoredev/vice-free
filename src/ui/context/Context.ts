@@ -1,5 +1,5 @@
 import { ReactNavigator } from '../navigation/navigator/ReactNavigator'
-import { Authenticator } from '../../services/auth/Authenticator'
+import { Authenticator } from '../auth/Authenticator'
 
 export interface Context {
     authenticator: Authenticator

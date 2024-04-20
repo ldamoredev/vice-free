@@ -1,5 +1,5 @@
 import { ChangeFunc, PresenterBase } from '@nbottarini/react-presenter'
-import { Authenticator } from '../../../services/auth/Authenticator'
+import { Authenticator } from '../../auth/Authenticator'
 
 export class AppInitializationPresenter extends PresenterBase<AppInitializationVM> {
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { GestureResponderEvent, Pressable, Text, TextStyle, View } from 'react-native'
 import { rgba } from '../color'
 import { ViewStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
-import { styled, styledPressable } from '@nbottarini/react-native-styled'
+import { styledPressable } from '@nbottarini/react-native-styled'
 import { rv } from '../rv'
 import { themed } from '../../theme/themed'
 

@@ -5,7 +5,7 @@ import { ScreenDefinition } from './ui/navigation/navigator/ScreenDefinition'
 import { ReactNavigator } from './ui/navigation/navigator/ReactNavigator'
 import { Context } from './ui/context/Context'
 import { SimpleAuthenticator } from './infrastructure/auth/SimpleAuthenticator'
-import { AsyncSecureStorage } from './infrastructure/auth/AsyncSecureStorage'
+import { RNAsyncStorage } from './infrastructure/auth/RNAsyncStorage'
 import { AuthStorage } from './infrastructure/auth/AuthStorage'
 import { UnhandledErrorManager } from './ui/unhandledErrors/UnhandledErrorManager'
 import { UnhandledErrorHandler } from './ui/unhandledErrors/UnhandledErrorHandler'
@@ -23,7 +23,7 @@ export class AppShell {
 
     private createContext(): Context {
         return {
-            authenticator: new SimpleAuthenticator(new AuthStorage(new AsyncSecureStorage())),
+            authenticator: new SimpleAuthenticator(new AuthStorage(new RNAsyncStorage())),
             navigator: new ReactNavigator(),
             onUnhandledError: (e) => this.unhandledErrorManager.handle(e),
         }

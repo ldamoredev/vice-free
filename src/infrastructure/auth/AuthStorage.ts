@@ -1,7 +1,7 @@
 import { SimpleStorage } from '@nbottarini/simplestorage'
-import { Identity } from '../../services/auth/identity/Identity'
-import { AnonymousIdentity } from '../../services/auth/identity/AnonymousIdentity'
-import { UserIdentity } from '../../services/auth/identity/UserIdentity'
+import { Identity } from '../../ui/auth/identity/Identity'
+import { AnonymousIdentity } from '../../ui/auth/identity/AnonymousIdentity'
+import { UserIdentity } from '../../ui/auth/identity/UserIdentity'
 
 export class AuthStorage {
     private cachedIdentity: Identity|null = null
