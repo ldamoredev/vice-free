@@ -3,7 +3,7 @@ name: "App Workflow"
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   app-test:
