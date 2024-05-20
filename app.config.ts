@@ -60,6 +60,5 @@ module.exports = {
                 ],
             },
         ],
-        'expo-secure-store',
     ],
 } satisfies ExpoConfig

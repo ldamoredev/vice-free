@@ -22,13 +22,13 @@ export class AuthStorage {
     }
 
     async clear() {
-        await this.dataStorage.set(this.authKey, null)
+        await this.dataStorage.set(this.authKey, '')
         this.cachedIdentity = null
     }
 
     private async tryGet(): Promise<Identity|null> {
         const identityString = await this.dataStorage.get(this.authKey)
-        if (identityString === null) return null
+        if (identityString) return null
         try {
             const serialized = JSON.parse(identityString)
             switch (serialized.type) {
